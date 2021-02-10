@@ -1,0 +1,28 @@
+version : "3.1"
+
+services: 
+
+  db:
+    image: mysql
+    container_name: dbmysql
+    env_file:
+      - ./data.env
+    environment: 
+      - MYSQL_ROOT_HOST=${HOST}
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DATABASE}
+    ports: 
+      - "6033:3306"
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+ 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      restart: always
+    ports:
+      - '8000:80'
