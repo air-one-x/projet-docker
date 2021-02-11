@@ -7,13 +7,13 @@ if( count($_GET) > 0 )
     $sql = "INSERT INTO `user`(`prenom`, `nom`, `email`, `age`, `color`, `gender`, `password`) VALUES (?,?,?,?,?,?,?);";
     $stmt = $mysqli->prepare($sql);
 
-    $stmt->bind_param('sssssss', $prenom,$nom,$email,$age,$color,$password,$gender);
-    $password = password_hash($_GET['Password'], PASSWORD_BCRYPT);
+    $stmt->bind_param('sssssss', $nom,$prenom,$email,$age,$color,$gender,$password);
     $nom = $_GET['Lastname'];
     $prenom = $_GET['Name'];
     $email = $_GET['E-mail'];
     $age = $_GET['Brithday'];
     $color= $_GET['favcolor'];
+    $password = password_hash($_GET['Password'], PASSWORD_BCRYPT);
     $gender = $_GET['Gender'];
     $stmt->execute();
     $stmt->close();

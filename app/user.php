@@ -1,7 +1,14 @@
 <?php
 
+$url = $_SERVER['REQUEST_URI'];
+$parseUrl = parse_url($url)['query'];
+$idUser = explode('=',$parseUrl)[1];
+$idNumber = intval($idUser);
+
 $mysqli = new mysqli('db', 'root','root', 'projet-docker');
-//$results = $mysqli->query('SELECT id, nom, prenom, email, age, gender FROM user WHERE ');
+$sql = "SELECT * FROM user WHERE id=$idNumber;";
+$result = $mysqli->query($sql);
+$user = $result->fetch_assoc();
 
 ?>
 
@@ -49,36 +56,37 @@ $mysqli = new mysqli('db', 'root','root', 'projet-docker');
                         </div>
 
                         <div id="esgi-app-user">
-                            <div id="esgi-app-form" class="form-orange">
-                                <form action="" method="">
-                                    <input required id="esgi-form-Name" type="text" name="Name" placeholder="Prénom" value="John">
-                                    <input required id="esgi-form-Lastname" type="text" name="Lastname" placeholder="Nom" value="Doe">
-                                    <input required id="esgi-form-E-mail" type="email" name="E-mail" placeholder="E-mail" value="john.doe@email.com">
-                                    <input required id="esgi-form-Brithday" type="date" name="Brithday" placeholder="Date de naissance" value="1901-01-01">
+                            <div id="esgi-app-form" class="form-<?= $user['color']?>">
+                                <form action="update-user.php" method="POST">
+                                    <input required id="esgi-form-Name" type="text" name="Name" placeholder="Prénom" value="<?=$user['prenom']?>">
+                                    <input required id="esgi-form-Lastname" type="text" name="Lastname" placeholder="Nom" value="<?=$user['nom']?>">
+                                    <input required id="esgi-form-E-mail" type="email" name="E-mail" placeholder="E-mail" value="<?=$user['email']?>">
+                                    <input required id="esgi-form-Brithday" type="date" name="Brithday" placeholder="Date de naissance" value="<?=$user['age']?>">
                                     <label required for="Gender">Homme</label>
-                                    <input required class="esgi-form-Gender" type="radio" name="Gender" value="M" checked>
+                                    <input required class="esgi-form-Gender" type="radio" name="Gender" value="M" <?php if($user['gender'] == "M"){echo "checked";}?>>
                                     <label required for="Gender">Femme</label>
-                                    <input required class="esgi-form-Gender" type="radio" name="Gender" value="F">
+                                    <input required class="esgi-form-Gender" type="radio" name="Gender" value="F" <?php if($user['gender'] == "F"){echo "checked";}?>>
                                     <select required id="esgi-form-favColor" name="favcolor">
                                         <option disabled hidden value="">Couleur favorite</option>
-                                        <option value="red">Rouge</option>
-                                        <option value="green">Vert</option>
-                                        <option value="blue">Bleu</option>
-                                        <option value="yellow">Jaune</option>
-                                        <option selected value="orange">Orange</option>
-                                        <option value="pink">Rose</option>
-                                        <option value="purple">Violet</option>
-                                        <option value="brown">Marron</option>
-                                        <option value="camel">Beige</option>
-                                        <option value="black">Noir</option>
-                                        <option value="grey">Gris</option>
-                                        <option value="white">Blanc</option>
+                                        <option <?php if($user['color'] == "red"){echo "selected";}?> value="red">Rouge</option>
+                                        <option <?php if($user['color'] == "green"){echo "selected";}?> value="green">Vert</option>
+                                        <option <?php if($user['color'] == "blue"){echo "selected";}?> value="blue">Bleu</option>
+                                        <option <?php if($user['color'] == "yellow"){echo "selected";}?> value="yellow">Jaune</option>
+                                        <option <?php if($user['color'] == "orange"){echo "selected";}?> value="orange">Orange</option>
+                                        <option <?php if($user['color'] == "prink"){echo "selected";}?> value="pink">Rose</option>
+                                        <option <?php if($user['color'] == "purple"){echo "selected";}?> value="purple">Violet</option>
+                                        <option <?php if($user['color'] == "brown"){echo "selected";}?> value="brown">Marron</option>
+                                        <option <?php if($user['color'] == "camel"){echo "selected";}?> value="camel">Beige</option>
+                                        <option <?php if($user['color'] == "black"){echo "selected";}?> value="black">Noir</option>
+                                        <option <?php if($user['color'] == "grey"){echo "selected";}?> value="grey">Gris</option>
+                                        <option <?php if($user['color'] == "white"){echo "selected";}?> value="white">Blanc</option>
                                     </select>
                                     <input id="esgi-form-submit" type="submit" value="Modifier">
                                 </form>
                             </div>
-
-                            <input id="esgi-user-delete" type="button" value="Effacer mes informations">
+                            <form action="delete-user.php?user=<?=$idNumber?>" method="POST">
+                            <input id="esgi-user-delete" type="submit" value="Effacer mes informations">
+                            </form>
                         </div>
                     </div>
                 </div>
