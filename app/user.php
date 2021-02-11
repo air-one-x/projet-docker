@@ -45,7 +45,7 @@ $mysqli = new mysqli('db', 'root','root', 'projet-docker');
                                 Consulte tes renseignant dès que tu le souhaites, tu peux aussi modifier ou effacer tes informations de notre base de données.
                             </p>
 
-                            <a href="index.html">Suivez ce lien pour revenir à la liste des utilisateurs</a>
+                            <a href="index.php">Suivez ce lien pour revenir à la liste des utilisateurs</a>
                         </div>
 
                         <div id="esgi-app-user">

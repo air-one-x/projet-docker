@@ -60,13 +60,15 @@ $results = $mysqli->query('SELECT id, nom, prenom, email, age FROM user');
                                 </thead>
                                 <tbody>
                                     <?php foreach($results as $key => $user) :?>
+                                        
                                             <tr>
-                                                <td><?=$user['id']?></td>
-                                                <td><?=$user['nom']?></td>
-                                                <td><?=$user['prenom']?></td>
-                                                <td><?=$user['email']?></td>
-                                                <td><?=$user['age']?></td>
+                                                <td><a href="user.php?user=<?=$user['id']?>"><?=$user['id']?></a></td>
+                                                <td><a href="user.php?user=<?=$user['id']?>"><?=$user['nom']?></a></td>
+                                                <td><a href="user.php?user=<?=$user['id']?>"><?=$user['prenom']?></a></td>
+                                                <td><a href="user.php?user=<?=$user['id']?>"><?=$user['email']?></a></td>
+                                                <td><a href="user.php?user=<?=$user['id']?>"><?=$user['age']?></a></td>
                                             </tr>
+                                        
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
