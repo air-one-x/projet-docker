@@ -1,3 +1,10 @@
+<?php
+
+$mysqli = new mysqli('db', 'root','root', 'projet-docker');
+//$results = $mysqli->query('SELECT id, nom, prenom, email, age, gender FROM user WHERE ');
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
