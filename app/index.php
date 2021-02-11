@@ -44,7 +44,7 @@ $results = $mysqli->query('SELECT id, nom, prenom, email, age FROM user');
                                 Voici la liste exhaustive de tous nos utilisateurs répertoriés dans notre base de données.
                             </p>
 
-                            <a href="formulaire.html">Suivez ce lien pour vous ajouter à cette liste !</a>
+                            <a href="formulaire.php">Suivez ce lien pour vous ajouter à cette liste !</a>
                         </div>
 
                         <div id="esgi-app-content">

@@ -89,12 +89,14 @@ a:hover {-webkit-transition: all 0.3s ease; opacity: 1; -moz-transition: all 0.3
 /* app form */
 #esgi-app-form {padding: 40px; background: #fff; margin-bottom: 32px; text-align: center;}
 #esgi-app-form form #esgi-form-Name,
+#esgi-app-form form #esgi-form-Password,
 #esgi-app-form form #esgi-form-Lastname,
 #esgi-app-form form #esgi-form-E-mail,
 #esgi-app-form form #esgi-form-Brithday,
 #esgi-app-form form #esgi-form-favColor {height: 30px; width: 75%; min-width: 200px; padding-left: 12px; background: #f5f5f5; border: none; border-radius: 3px; outline: 0; display: block; margin: 0 auto 24px auto; box-sizing: border-box; -webkit-transition: all 0.3s ease;-moz-transition: all 0.3s ease;-ms-transition: all 0.3s ease;-o-transition: all 0.3s ease;transition: all 0.3s ease;}
 #esgi-app-form form #esgi-form-Name:hover,
 #esgi-app-form form #esgi-form-Lastname:hover,
+#esgi-app-form form #esgi-form-Password:hover,
 #esgi-app-form form #esgi-form-E-mail:hover,
 #esgi-app-form form #esgi-form-Brithday:hover,
 #esgi-app-form form #esgi-form-favColor:hover

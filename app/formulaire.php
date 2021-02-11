@@ -1,3 +1,28 @@
+<?php
+
+$mysqli = new mysqli('db', 'root','root', 'projet-docker');
+
+if( count($_GET) > 0 ) 
+{
+    $sql = "INSERT INTO `user`(`prenom`, `nom`, `email`, `age`, `color`, `password`) VALUES (?,?,?,?,?,?);";
+    $stmt = $mysqli->prepare($sql);
+
+    $stmt->bind_param('ssssss', $prenom,$nom,$email,$age,$color,$password);
+    $password = password_hash($_GET['Password'], PASSWORD_BCRYPT);
+    $nom = $_GET['Lastname'];
+    $prenom = $_GET['Name'];
+    $email = $_GET['E-mail'];
+    $age = $_GET['Brithday'];
+    $color= $_GET['favcolor'];
+    $stmt->execute();
+    $stmt->close();
+
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +72,7 @@
                                 <input required id="esgi-form-Lastname" type="text" name="Lastname" placeholder="Nom">
                                 <input required id="esgi-form-E-mail" type="email" name="E-mail" placeholder="E-mail">
                                 <input required id="esgi-form-Brithday" type="date" name="Brithday" placeholder="Date de naissance">
+                                <input required id="esgi-form-Password" type="password" name="Password" placeholder="Mot de passe">
                                 <label required for="Gender">Homme</label>
                                 <input required class="esgi-form-Gender" type="radio" name="Gender" value="M">
                                 <label required for="Gender">Femme</label>
