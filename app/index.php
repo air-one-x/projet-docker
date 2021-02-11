@@ -22,7 +22,7 @@ $results = $mysqli->query('SELECT id, nom, prenom, email, age FROM user');
         <div id="esgi-straightLine"></div>
 
         <div class="esgi-section">
-            <img class="esgi-logo" src="images/esgi.png" alt="">
+            <a href="index.php"><img class="esgi-logo" src="images/esgi.png" alt="logo"></a>
         </div>
     </header>
     

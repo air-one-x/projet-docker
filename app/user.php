@@ -30,7 +30,7 @@ $user = $result->fetch_assoc();
         <div id="esgi-straightLine"></div>
 
         <div class="esgi-section">
-            <img class="esgi-logo" src="images/esgi.png" alt="">
+        <a href="index.php"><img class="esgi-logo" src="images/esgi.png" alt="logo"></a>
         </div>
     </header>
     
@@ -49,7 +49,7 @@ $user = $result->fetch_assoc();
                             <h1>Vos informations !</h1>
 
                             <p>
-                                Consulte tes renseignant dès que tu le souhaites, tu peux aussi modifier ou effacer tes informations de notre base de données.
+                                Consulte tes renseignant dès que tu le souhaites, tu peux aussi les modifier ou les supprimer de notre base de données.
                             </p>
 
                             <a href="index.php">Suivez ce lien pour revenir à la liste des utilisateurs</a>
@@ -58,10 +58,11 @@ $user = $result->fetch_assoc();
                         <div id="esgi-app-user">
                             <div id="esgi-app-form" class="form-<?= $user['color']?>">
                                 <form action="update-user.php" method="POST">
+                                    <input hidden type="text" name="Id" value="<?= $user['id']?>">
                                     <input required id="esgi-form-Name" type="text" name="Name" placeholder="Prénom" value="<?=$user['prenom']?>">
                                     <input required id="esgi-form-Lastname" type="text" name="Lastname" placeholder="Nom" value="<?=$user['nom']?>">
                                     <input required id="esgi-form-E-mail" type="email" name="E-mail" placeholder="E-mail" value="<?=$user['email']?>">
-                                    <input required id="esgi-form-Brithday" type="date" name="Brithday" placeholder="Date de naissance" value="<?=$user['age']?>">
+                                    <input required id="esgi-form-Brithday" type="number" name="Brithday" placeholder="Date de naissance" value="<?=$user['age']?>">
                                     <label required for="Gender">Homme</label>
                                     <input required class="esgi-form-Gender" type="radio" name="Gender" value="M" <?php if($user['gender'] == "M"){echo "checked";}?>>
                                     <label required for="Gender">Femme</label>

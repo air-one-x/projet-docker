@@ -12,10 +12,10 @@ $age = $_POST['Brithday'];
 $color= $_POST['favcolor'];
 $gender = $_POST['Gender'];
 $testPrenom = $_POST['Name'];
+$id = $_POST['Id'];
 $stmt->execute();
 $stmt->close();
 
-header("Location: index.php"); /* Redirect browser */
-
+header("Location: user.php?user=".strval($id)); /* Redirect browser */
 
 ?>

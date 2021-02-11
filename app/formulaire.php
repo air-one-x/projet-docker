@@ -18,6 +18,7 @@ if( count($_GET) > 0 )
     $stmt->execute();
     $stmt->close();
 
+    header("Location: index.php");
 }
 ?>
 
@@ -42,7 +43,7 @@ if( count($_GET) > 0 )
         <div id="esgi-straightLine"></div>
 
         <div class="esgi-section">
-            <img class="esgi-logo" src="images/esgi.png" alt="">
+        <a href="index.php"><img class="esgi-logo" src="images/esgi.png" alt="logo"></a>
         </div>
     </header>
     
@@ -72,7 +73,7 @@ if( count($_GET) > 0 )
                                 <input required id="esgi-form-Name" type="text" name="Name" placeholder="Prénom">
                                 <input required id="esgi-form-Lastname" type="text" name="Lastname" placeholder="Nom">
                                 <input required id="esgi-form-E-mail" type="email" name="E-mail" placeholder="E-mail">
-                                <input required id="esgi-form-Brithday" type="date" name="Brithday" placeholder="Date de naissance">
+                                <input required id="esgi-form-Brithday" type="number" name="Brithday" placeholder="Àge">
                                 <input required id="esgi-form-Password" type="password" name="Password" placeholder="Mot de passe">
                                 <label required for="Gender">Homme</label>
                                 <input required class="esgi-form-Gender" type="radio" name="Gender" value="M">
